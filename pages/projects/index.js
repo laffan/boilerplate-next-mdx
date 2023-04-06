@@ -1,8 +1,6 @@
-import Layout from '../../components/Layout'
-import Link from 'next/link'
-import getAllPosts from './../api/getAllPosts'
-// import { parseISO, format } from 'date-fns'
-// import { groupBy } from 'lodash';
+import Layout from "../../components/Layout";
+import Link from "next/link";
+import getAllPosts from "./../api/getAllPosts";
 
 const Index = ({ projectsJSON }) => {
   const projects = JSON.parse(projectsJSON);
@@ -12,15 +10,13 @@ const Index = ({ projectsJSON }) => {
   const Project = ({ projectData: { title, slug, subtitle } }) => {
     return (
       <li className="Projects__Project">
-        <Link href={'/projects/' + slug}>
-          <a>
-            <h3>{title} </h3>
-            <p>{subtitle}</p>
-          </a>
+        <Link href={"/projects/" + slug}>
+          <h3>{title} </h3>
+          <p>{subtitle}</p>
         </Link>
       </li>
-    )
-  }
+    );
+  };
 
   return (
     <Layout pageName="Projects">
@@ -29,19 +25,21 @@ const Index = ({ projectsJSON }) => {
           <h1>projects</h1>
         </div>
 
-        {projects.map((project,i) => <Project key={`project${i}`} projectData={project} />)}
+        {projects.map((project, i) => (
+          <Project key={`project${i}`} projectData={project} />
+        ))}
       </div>
     </Layout>
-  )
-}
+  );
+};
 
-export default Index
+export default Index;
 
 export async function getStaticProps() {
-  const allPosts = getAllPosts('projects')
-    const projectsJSON = JSON.stringify(allPosts)
+  const allPosts = getAllPosts("projects");
+  const projectsJSON = JSON.stringify(allPosts);
 
   return {
     props: { projectsJSON },
-  }
+  };
 }
