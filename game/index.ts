@@ -1,5 +1,4 @@
 import { Types } from "phaser";
-
 import { BootScene } from "./scenes";
 
 const gameConfig: Types.Core.GameConfig = {

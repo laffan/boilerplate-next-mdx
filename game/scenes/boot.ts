@@ -1,12 +1,11 @@
 import { Scene, GameObjects } from "phaser";
 
-import { SCENES, PROGRESS_BAR, PROGRESS_BG } from "../constants";
+import { SCENES } from "../constants";
 import { LoadScene } from "./load";
 import { MainScene } from "./main";
 
 export class BootScene extends Scene {
   preload() {
-
   }
 
   init() {
