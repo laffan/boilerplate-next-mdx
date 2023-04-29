@@ -2,19 +2,26 @@ import { Types } from "phaser";
 import { BootScene } from "./scenes";
 
 const gameConfig: Types.Core.GameConfig = {
-  width: "100%",
-  height: "100%",
+  parent: "myGame",
   type: Phaser.AUTO,
+  backgroundColor: "#125555",
+
+  height: 100,
+  width: 960,
   scale: {
-    mode: Phaser.Scale.FIT,
-    autoCenter: Phaser.Scale.CENTER_BOTH
+    // autoCenter: Phaser.Scale.CENTER_BOTH,
   },
-  render: {
-    antialias: false,
-    pixelArt: true,
-    roundPixels: true
+  physics: {
+    default: "arcade",
+    arcade: {
+      debug: true,
+      gravity: {
+        x: 0,
+        y: 0,
+      },
+    },
   },
-  scene: BootScene
+  scene: BootScene,
 };
 
 export default gameConfig;

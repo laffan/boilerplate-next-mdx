@@ -1,27 +1,37 @@
-import { Scene, GameObjects } from "phaser";
+import { Scene, Cameras, GameObjects } from "phaser";
 
-import { SCENES } from "../constants";
 import { LoadScene } from "./load";
 import { MainScene } from "./main";
 
 export class BootScene extends Scene {
+  private camera!: Cameras.Scene2D.Camera;
+
+  debounce(func, wait) {
+    let timeout;
+    return function (...args) {
+      const context = this;
+      clearTimeout(timeout);
+      timeout = setTimeout(() => func.apply(context, args), wait);
+    };
+  }
+
   preload() {
+    this.scale.resize(window.innerWidth, window.innerHeight);
   }
 
   init() {
-    this.scale.on("resize", this.resize, this);
+    const debouncedResizeGame = this.debounce(() => {
+      this.scale.resize(window.innerWidth, window.innerHeight);
+    }, 100);
+    window.addEventListener("resize", debouncedResizeGame);
+
+    this.camera = this.cameras.main;
+    this.camera.setBackgroundColor("#24252A");
   }
 
   create() {
-    // TODO: Configure scaling
-
-    this.scene.add(SCENES.LOAD, LoadScene, false);
-    this.scene.add(SCENES.MAIN, MainScene, false);
-
-    this.scene.start(SCENES.LOAD);
-  }
-
-  resize(gameSize: GameObjects.Components.Size) {
-    this.cameras.resize(gameSize.width, gameSize.height);
+    this.scene.add("LoadScene", LoadScene, false);
+    this.scene.add("MainScene", MainScene, false);
+    this.scene.start("LoadScene");
   }
 }

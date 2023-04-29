@@ -1,30 +1,30 @@
-import { Scene, GameObjects, Cameras } from "phaser";
+import { Scene, GameObjects } from "phaser";
 
 export class MainScene extends Scene {
+  
   private helloLabel!: GameObjects.Text;
   private testImg!: GameObjects.Image;
-  private camera!: Cameras.Scene2D.Camera;
-  init() {
-    this.camera = this.cameras.main;
-    this.camera.setBackgroundColor("#24252A");
-  }
 
   preload() {
+    console.log("MainScene")
     this.load.setBaseURL("/assets/game/img");
     this.load.image("test", "test-image.png");
   }
 
   create() {
-    const { centerX, centerY } = this.camera;
+    const { centerX, centerY } = this.cameras.main;
+    const { width, height } = this.game.config;
+    var rect = this.add.rectangle(300, 50, 300, 400, 0xFFFFFF).setOrigin(0,0);
+
     this.helloLabel = this.add
-      .text(centerX, centerY, "Hello World", {
+      .text(150, 150, "Hello World", {
         fontFamily: "Rancho",
-        fontSize: 80,
+        fontSize: 30,
       })
       .setShadow(5, 5, "#5588EE", 0, true, true)
       .setOrigin(0.5, 0.5);
 
-    this.testImg = this.add.image(400, 300, 'test').setScale(.5);
+    this.testImg = this.add.image(150, 300, 'test').setScale(.5);
 
   }
 
