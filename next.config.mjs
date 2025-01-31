@@ -7,6 +7,8 @@ const nextConfig = {
     path: "",
   },
   assetPrefix: "./",
+  // output: "export", - uncomment for static export
+  // trailingSlash: true,  - uncomment for static export
 };
 
 export default nextConfig;

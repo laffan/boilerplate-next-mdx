@@ -1,4 +1,5 @@
 import { useRouter } from 'next/router'
+import Link from "next/link";
 
 const NavItems = ({ exclude }) => {
   const router = useRouter()
@@ -25,14 +26,14 @@ const NavItems = ({ exclude }) => {
           (l, i) =>
             l.href !== exclude && (
               <li key={`link-${i}`}>
-                <a
+                <Link
                   className={`NavItems__Link ${
                     l.href === router.route ? 'active' : ''
                   }`}
                   href={l.href}
                 >
                   {l.name}
-                </a>
+                </Link>
               </li>
             ),
         )}

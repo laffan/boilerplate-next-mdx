@@ -35,7 +35,7 @@ export async function getStaticProps({ params: { slug } }) {
 }
 
 const Index = ({ mdxSource }) => {
-  // All components used in posts must be added here.
+  // ALL components must be added here.
   const components = {
     DemoComponent,
   }

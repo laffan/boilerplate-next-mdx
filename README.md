@@ -12,4 +12,8 @@ Exports to gh-pages branch via this guide : https://www.bravolt.com/post/deployi
 ## Deployment
 Uses [next-mdx-remote](https://github.com/hashicorp/next-mdx-remote) to serve MDX files via `getStaticProps` 
 
-Should work out of the box, so long as you have a `gh-pages` branch set up.
+- Should work out of the box.
+
+- If you're exporting to a static site (like gh-pages) make sure to uncomment the two named lines in next.config.
+
+- Also, though the gh-pgaes workflow is in there (official from Next) remember you'll need to unprotect the gh-pages environment in settings before deploying.
