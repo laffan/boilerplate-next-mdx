@@ -1,6 +1,6 @@
 # Next Boilerplate (MDX)
 
-Bare-bones next.js boilerplate with blog (MDX), R3Fiber and scss set up.
+Bare-bones next.js boilerplate with blog (MDX) and scss set up. Works well both as standard Next site and static deployment.
 
 Exports to gh-pages branch via this guide : https://www.bravolt.com/post/deploying-next-js-to-github-pages
 
